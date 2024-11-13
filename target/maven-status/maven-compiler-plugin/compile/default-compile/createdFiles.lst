@@ -1,4 +1,5 @@
 CuestionarioCiencia\CuestionarioCiencia$5.class
+Modelos\InicioSesionModelo.class
 valecita\trabajofinal\CuestionarioTema1RV.class
 qantuw\trabajofinal\ProgresoProfesor$1.class
 CuestionarioHistoria\Tema2_Historia.class
@@ -55,6 +56,7 @@ CuestionarioHistoria\Tema5_Historia$1.class
 CuestionarioCiencia\Tema5_Ciencia$2.class
 CuestionarioCiencia\Tema2_Ciencia$2.class
 CuestionarioHistoria\Tema4_Historia.class
+Modelos\CursoService.class
 Main\Profesor.class
 CuestionarioCiencia\Tema3_Ciencia$4.class
 qantuw\trabajofinal\TemarioRM$1.class
@@ -113,6 +115,7 @@ CuestionarioHistoria\Tema1_Historia.class
 CuestionarioHistoria\TableroHistoria$1.class
 CuestionarioCiencia\TableroCiencia$4.class
 CuestionarioHistoria\Tema4_Historia$3.class
+Modelos\Mysql.class
 CuestionarioCiencia\Tema3_Ciencia$1.class
 CuestionarioHistoria\Tema3_Historia$1.class
 CuestionarioHistoria\CuestionarioHistoria$4.class

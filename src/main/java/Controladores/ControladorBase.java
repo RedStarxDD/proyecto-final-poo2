@@ -4,19 +4,18 @@
  */
 package Controladores;
 
+import Modelos.InicioSesionModelo;
 import Main.Alumno;
 import Main.Profesor;
 import Main.Usuario;
 import core.Controller;
 
-/**
- *
- * @author user
- */
-public class ControladorBase extends Controller{
-    private InicioSesionControlador inicioSesionControlador=new InicioSesionControlador(this);
-    private CursosControlador cursosControlador=new CursosControlador();
-    private InicioProfesorControlador inicioProfesorControlador=new InicioProfesorControlador();
+
+public class ControladorBase extends Controller {
+
+    private InicioSesionControlador inicioSesionControlador = new InicioSesionControlador(this);
+    private CursosControlador cursosControlador = new CursosControlador();
+    private InicioProfesorControlador inicioProfesorControlador = new InicioProfesorControlador();
 
     @Override
     public void run() {
@@ -24,13 +23,14 @@ public class ControladorBase extends Controller{
         cursosControlador.run();
         inicioProfesorControlador.run();
     }
-    
-    public void decidirUsuario(Usuario usuario){
+
+    public void decidirUsuario(Usuario usuario) {
         inicioSesionControlador.getVista().setVisible(false);
+        String correo = usuario.getCorreo();
         
-        if(usuario instanceof Alumno){
+        if (usuario instanceof Alumno) {
             cursosControlador.getVista().setVisible(true);
-        }else if(usuario instanceof Profesor){
+        } else {
             inicioProfesorControlador.getVista().setVisible(true);
         }
     }

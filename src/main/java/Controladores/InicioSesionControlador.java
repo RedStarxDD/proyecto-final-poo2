@@ -6,7 +6,7 @@ package Controladores;
 
 import Main.Alumno;
 import Main.Profesor;
-import Main.Usuario;
+import Modelos.InicioSesionModelo;
 import core.Controller;
 import Vistas.IniciodeSesión;
 
@@ -32,11 +32,17 @@ public class InicioSesionControlador extends Controller{
         return vista;
     }
     
-    public void buscarUsuario(String usuario, String contra){
-        if(usuario.equals("dante")){
-            base.decidirUsuario(new Alumno(null, "1", usuario, contra, "Dante"));            
+    public void buscarUsuario(String usuario, char[] contra){
+        String contrasena=new String(contra);
+        
+        if (InicioSesionModelo.validarLogin(usuario, contrasena)) {
+            if (InicioSesionModelo.determinarTipoDeUsuario(usuario).equalsIgnoreCase("Alumno")) {
+                base.decidirUsuario(new Alumno(null, "1", usuario, contrasena, "Dante"));            
+            } else {
+                base.decidirUsuario(new Profesor(null, "1", usuario, contrasena, "Gianny"));
+            }
         }else{
-            base.decidirUsuario(new Profesor(null, "1", usuario, contra, "Gianny"));
+            System.out.println("No se encontró ningún usuario");
         }
     }
 }

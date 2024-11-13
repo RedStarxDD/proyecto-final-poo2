@@ -168,11 +168,11 @@ public class IniciodeSesión extends javax.swing.JFrame implements View{
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         if (txtUsuario.getText().trim().isEmpty()) {
-            System.out.println("error usuario");
+            System.out.println("Usuario vacío");
         }else if (txtContrasena.getPassword().length==0){
-            System.out.println("error contraseña");
+            System.out.println("Contraseña vacía");
         }else{
-            controlador.buscarUsuario(txtUsuario.getText(), txtUsuario.getText());
+            controlador.buscarUsuario(txtUsuario.getText(), txtContrasena.getPassword());
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
