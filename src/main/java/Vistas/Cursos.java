@@ -5,6 +5,9 @@
 package Vistas;
 
 import Controladores.CursosControlador;
+import Modelos.Curso;
+import java.util.List;
+import javax.swing.JButton;
 
 /**
  *
@@ -16,10 +19,19 @@ public class Cursos extends javax.swing.JFrame {
      * Creates new form Cursos
      */
     private CursosControlador controlador;
+    private List<JButton> botones;
+    private List<Curso> cursos;
     
     public Cursos(CursosControlador controlador) {
         this.controlador=controlador;
         initComponents();
+        
+        botones=List.of(btnCurso1,btnCurso2,btnCurso3,btnCurso4,btnCurso5);
+        cursos=controlador.listarCursos();
+        
+        for (int i = 0; i < cursos.size(); i++) {
+            botones.get(i).setText(cursos.get(i).getNombre());
+        }
     }
 
     /**
@@ -38,12 +50,11 @@ public class Cursos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnCurso1 = new javax.swing.JButton();
+        btnCurso2 = new javax.swing.JButton();
+        btnCurso3 = new javax.swing.JButton();
+        btnCurso4 = new javax.swing.JButton();
+        btnCurso5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +63,7 @@ public class Cursos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("MIS CURSOS");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\logo.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.jpg"))); // NOI18N
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -63,41 +74,35 @@ public class Cursos extends javax.swing.JFrame {
 
         jLabel5.setText("aprenderas a desarrollar tus conocimientos.");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton1.setText("HISTORIA");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCurso1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCurso1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
+        btnCurso1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurso1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton2.setText("RAZONAMIENTO VERBAL");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCurso2.setForeground(new java.awt.Color(255, 255, 255));
+        btnCurso2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
+        btnCurso2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton3.setText("RAZONAMIENTO MATEMÁTICO");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCurso3.setForeground(new java.awt.Color(255, 255, 255));
+        btnCurso3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
+        btnCurso3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton4.setText("COMUNICACIÓN");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCurso4.setForeground(new java.awt.Color(255, 255, 255));
+        btnCurso4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
+        btnCurso4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton5.setText("CIENCIA Y AMBIENTE");
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
-        jButton6.setText("LIBRERIA");
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCurso5.setForeground(new java.awt.Color(255, 255, 255));
+        btnCurso5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
+        btnCurso5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,14 +134,11 @@ public class Cursos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnCurso3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnCurso4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnCurso5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,18 +160,16 @@ public class Cursos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCurso1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnCurso2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnCurso3)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnCurso4)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addComponent(btnCurso5)
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,6 +185,11 @@ public class Cursos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso1ActionPerformed
+        // TODO add your handling code here:
+        controlador.abrirTablero(1);
+    }//GEN-LAST:event_btnCurso1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,20 +219,19 @@ public class Cursos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Cursos(null).setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnCurso1;
+    private javax.swing.JButton btnCurso2;
+    private javax.swing.JButton btnCurso3;
+    private javax.swing.JButton btnCurso4;
+    private javax.swing.JButton btnCurso5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

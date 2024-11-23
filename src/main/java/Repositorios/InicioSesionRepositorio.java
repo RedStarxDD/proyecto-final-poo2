@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Modelos;
+package Repositorios;
 
+import Modelos.Mysql;
 import core.Model;
 import core.View;
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class InicioSesionModelo implements Model{
+public class InicioSesionRepositorio implements Model{
 
     // Método para validar el login usando PreparedStatement para mayor seguridad
     public static boolean validarLogin(String txtUser, String txtPass) {

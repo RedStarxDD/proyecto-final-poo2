@@ -47,7 +47,7 @@ public class InicioProfesor extends javax.swing.JFrame {
         jLabel1.setText("BIENVENIDO PROFESOR(A)");
         jLabel1.setToolTipText("");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Profesor.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Profesor.jpg"))); // NOI18N
 
         jLabel3.setText("Ver el progreso de los alumnos ayudará a detectar sus debilidades  y");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -55,11 +55,11 @@ public class InicioProfesor extends javax.swing.JFrame {
 
         jLabel4.setText("usted  podra fortalecer y resolver dudas que pueda taner el estudiante ");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\logo.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.jpg"))); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\Degradado2.jpg")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
         jButton1.setText("PROGRESO DE MIS ESTUDIANTES");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 

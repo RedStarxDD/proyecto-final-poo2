@@ -4,9 +4,9 @@
  */
 package Controladores;
 
-import Main.Alumno;
-import Main.Profesor;
-import Modelos.InicioSesionModelo;
+import Modelos.Alumno;
+import Modelos.Profesor;
+import Repositorios.InicioSesionRepositorio;
 import core.Controller;
 import Vistas.IniciodeSesión;
 
@@ -35,8 +35,8 @@ public class InicioSesionControlador extends Controller{
     public void buscarUsuario(String usuario, char[] contra){
         String contrasena=new String(contra);
         
-        if (InicioSesionModelo.validarLogin(usuario, contrasena)) {
-            if (InicioSesionModelo.determinarTipoDeUsuario(usuario).equalsIgnoreCase("Alumno")) {
+        if (InicioSesionRepositorio.validarLogin(usuario, contrasena)) {
+            if (InicioSesionRepositorio.determinarTipoDeUsuario(usuario).equalsIgnoreCase("Alumno")) {
                 base.decidirUsuario(new Alumno(null, "1", usuario, contrasena, "Dante"));            
             } else {
                 base.decidirUsuario(new Profesor(null, "1", usuario, contrasena, "Gianny"));

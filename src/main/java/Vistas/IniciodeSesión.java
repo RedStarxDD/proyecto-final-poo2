@@ -53,9 +53,9 @@ public class IniciodeSesión extends javax.swing.JFrame implements View{
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("INICIAR SESIÓN");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\IS.1.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IS.1.jpg"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\USIL\\Ciclo 4\\Programacion Orientada a Objetos II\\proyecto_final\\src\\main\\resources\\images\\logo.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.jpg"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("USUARIO: ");
