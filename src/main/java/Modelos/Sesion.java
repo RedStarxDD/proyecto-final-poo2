@@ -14,12 +14,14 @@ import java.util.List;
  */
 public class Sesion {
     private String id, titulo;
-    private List<String> videos;
+    private String video;
+    private boolean completo;
 
-    public Sesion(String id, String titulo, List<String> videos) {
+    public Sesion(String id, String titulo, String video, boolean completo) {
         this.id = id;
         this.titulo = titulo;
-        this.videos = videos;
+        this.video = video;
+        this.completo = completo;
     }
 
     public String getId() {
@@ -38,13 +40,21 @@ public class Sesion {
         this.titulo = titulo;
     }
 
-    public List<String> getVideos() {
-        return videos;
+    public String getVideo() {
+        return video;
     }
 
-    public void setVideos(List<String> videos) {
-        this.videos = videos;
+    public void setVideo(String video) {
+        this.video = video;
     }
-    
+
+    public boolean isCompleto() {
+        return completo;
+    }
+
+    public void setCompleto(boolean completo) {
+        this.completo = completo;
+    }
+
     
 }

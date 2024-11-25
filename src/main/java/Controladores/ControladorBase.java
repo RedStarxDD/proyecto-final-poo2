@@ -14,9 +14,12 @@ import core.Controller;
 public class ControladorBase extends Controller {
 
     private InicioSesionControlador inicioSesionControlador = new InicioSesionControlador(this);
-    private InicioProfesorControlador inicioProfesorControlador = new InicioProfesorControlador();
+    private InicioProfesorControlador inicioProfesorControlador = new InicioProfesorControlador(this);
     private CursosControlador cursosControlador = new CursosControlador(this);
-    private TableroControlador tableroControlador=new TableroControlador();
+    private TableroControlador tableroControlador=new TableroControlador(this);
+    private TemarioControlador temarioControlador=new TemarioControlador(this);
+    private TutoriasControlador tutoriasControlador=new TutoriasControlador(this);
+    private ProgresoControlador progresoControlador=new ProgresoControlador();
 
     @Override
     public void run() {
@@ -24,6 +27,9 @@ public class ControladorBase extends Controller {
         cursosControlador.run();
         inicioProfesorControlador.run();
         tableroControlador.run();
+        temarioControlador.run();
+        tutoriasControlador.run();
+        progresoControlador.run();
     }
 
     public void decidirUsuario(Usuario usuario) {
@@ -31,16 +37,53 @@ public class ControladorBase extends Controller {
         String correo = usuario.getCorreo();
         
         if (usuario instanceof Alumno) {
-            cursosControlador.setAlumno(usuario);
+            //Aquí buscariamos los cursos del usuario y se lo pasaríamos al controlador
+            cursosControlador.listarCursos();
             cursosControlador.getVista().setVisible(true);
         } else {
             inicioProfesorControlador.getVista().setVisible(true);
         }
     }
     
-    public void mostrarTablero(int id){
+    public void regresarCursos(){
+        tableroControlador.getVista().setVisible(false);
+        cursosControlador.getVista().setVisible(true);
+    }
+    
+    public void mostrarTablero(String id){
         cursosControlador.getVista().setVisible(false);
         tableroControlador.getVista().setVisible(true);
         tableroControlador.mostrarInfo(id);
+    }
+    
+    public void regresarTablero(){
+        if(tutoriasControlador.getVista().isVisible()) 
+            tutoriasControlador.getVista().setVisible(false);
+        if(temarioControlador.getVista().isVisible()) 
+            temarioControlador.getVista().setVisible(false);
+        tableroControlador.getVista().setVisible(true);
+    }
+    
+    public void mostrarTemario(String titulo){
+        tableroControlador.getVista().setVisible(false);
+        temarioControlador.getVista().setVisible(true);
+        temarioControlador.mostrarInfo(titulo);
+        //Aquí buscaríamos los temas del curso y se lo pasaríamos al controlador
+    }
+        
+    public void mostrarTutorias(){
+        tableroControlador.getVista().setVisible(false);
+        tutoriasControlador.getVista().setVisible(true);
+        tutoriasControlador.listarSesiones();
+    }
+    
+    public void mostrarProgreso(){
+        if(tableroControlador.getVista().isVisible())
+            tableroControlador.getVista().setVisible(false);
+        if(inicioProfesorControlador.getVista().isVisible())
+            inicioProfesorControlador.getVista().setVisible(false);
+        
+        progresoControlador.getVista().setVisible(true);       
+        progresoControlador.getVista().activarBuscador(false);
     }
 }

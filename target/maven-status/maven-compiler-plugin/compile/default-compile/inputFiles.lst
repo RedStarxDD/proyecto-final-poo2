@@ -1,7 +1,6 @@
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\ControladorBase.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioHistoria\TableroHistoria.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioHistoria\Tema5_Historia.java
-C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\qantuw\trabajofinal\TutoríasRM.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\valecita\trabajofinal\TableroRV.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Modelos\Curso.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Vistas\Cursos.java
@@ -9,8 +8,10 @@ C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyect
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\TutorìasCiencia.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\InicioProfesorControlador.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\TableroControlador.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Vistas\Temario.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\CuestionarioCiencia.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Modelos\Alumno.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\TemarioControlador.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\valecita\trabajofinal\BibliotecaRV.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\TableroCiencia.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\Bibliotecaderecursos_Ciencia.java
@@ -19,9 +20,9 @@ C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyect
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\Tema2_Ciencia.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\core\Controller.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\Tema4_Ciencia.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\ProgresoControlador.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioCiencia\Tema5_Ciencia.java
-C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\qantuw\trabajofinal\TemarioRM.java
-C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\qantuw\trabajofinal\ProgresoProfesor.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Vistas\Tutorias.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Modelos\Mysql.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Modelos\Sesion.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioHistoria\Tema1_Historia.java
@@ -49,4 +50,6 @@ C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyect
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\qantuw\trabajofinal\ResultadoRM1.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\CursosControlador.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\CuestionarioHistoria\Tema4_Historia.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Controladores\TutoriasControlador.java
+C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\Vistas\Progreso.java
 C:\Users\user\Documents\USIL\Ciclo 4\Programacion Orientada a Objetos II\proyecto_final\src\main\java\core\View.java

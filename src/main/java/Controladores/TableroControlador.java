@@ -17,11 +17,16 @@ import java.util.List;
  */
 public class TableroControlador extends Controller{
     private Tablero vista;
+    private ControladorBase base;
     private Curso curso;
     
     @Override
     public void run() {
         vista=new Tablero(this);
+    }
+
+    public TableroControlador(ControladorBase base) {
+        this.base = base;
     }
 
     public Tablero getVista() {
@@ -36,9 +41,22 @@ public class TableroControlador extends Controller{
         this.curso = curso;
     }
     
-    public void mostrarInfo(int id){
-        Curso curso=new Curso(String.valueOf(id), "Razonamiento matemático", null, 0, null);
+    public void mostrarInfo(String id){
+        Curso curso=new Curso(id, "Razonamiento matemático", null, 0, null);
         vista.mostrarTitulo(curso.getNombre());
         //Aqui se buscaría el curso con el id respectivo en la base de datos
+    }
+    
+    public void mostrarTemario(String titulo){
+        base.mostrarTemario(titulo);
+    }
+    public void mostrarCursos(){
+        base.regresarCursos();
+    }
+    public void mostrarTutorias(){
+        base.mostrarTutorias();
+    }
+    public void mostrarProgreso(){
+        base.mostrarProgreso();
     }
 }

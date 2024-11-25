@@ -18,7 +18,7 @@ import java.util.List;
 public class CursosControlador extends Controller{
     private Cursos vista;
     private ControladorBase base;
-    private Usuario alumno;
+    private List<Curso> cursos;
 
     @Override
     public void run() {
@@ -33,25 +33,25 @@ public class CursosControlador extends Controller{
         return vista;
     }
 
-    public Usuario getAlumno() {
-        return alumno;
+    public List<Curso> getCursos() {
+        return cursos;
     }
 
-    public void setAlumno(Usuario alumno) {
-        this.alumno = alumno;
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 
-    public List<Curso> listarCursos(){
-        List<Curso> cursos;
+    public void listarCursos(){
+        List<Curso> cursosTemp;
         Curso curso1=new Curso("1", "Razonamiento matemático", null, 0, null);
         Curso curso2=new Curso("2", "Historia", null, 0, null);
-        cursos=List.of(curso1, curso2);
-        return cursos;
-        
+        cursosTemp=List.of(curso1, curso2);
+        cursos=cursosTemp;
+        vista.mostrarInfo();
         //Aquí se llamaría al sql y se retornaría una lista de cursos
     }
     
-    public void abrirTablero(int idCurso){
+    public void abrirTablero(String idCurso){
         base.mostrarTablero(idCurso);
     }
 }

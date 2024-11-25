@@ -20,18 +20,18 @@ public class Cursos extends javax.swing.JFrame {
      */
     private CursosControlador controlador;
     private List<JButton> botones;
-    private List<Curso> cursos;
     
     public Cursos(CursosControlador controlador) {
         this.controlador=controlador;
         initComponents();
         
-        botones=List.of(btnCurso1,btnCurso2,btnCurso3,btnCurso4,btnCurso5);
-        cursos=controlador.listarCursos();
-        
-        for (int i = 0; i < cursos.size(); i++) {
-            botones.get(i).setText(cursos.get(i).getNombre());
-        }
+        botones=List.of(btnCurso1,btnCurso2,btnCurso3,btnCurso4,btnCurso5);       
+    }
+    
+    public void mostrarInfo(){       
+        for (int i = 0; i < controlador.getCursos().size(); i++) {
+            botones.get(i).setText(controlador.getCursos().get(i).getNombre());
+        }        
     }
 
     /**
@@ -88,6 +88,11 @@ public class Cursos extends javax.swing.JFrame {
         btnCurso2.setForeground(new java.awt.Color(255, 255, 255));
         btnCurso2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
         btnCurso2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurso2ActionPerformed(evt);
+            }
+        });
 
         btnCurso3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCurso3.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,8 +193,13 @@ public class Cursos extends javax.swing.JFrame {
 
     private void btnCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso1ActionPerformed
         // TODO add your handling code here:
-        controlador.abrirTablero(1);
+        controlador.abrirTablero(controlador.getCursos().get(0).getId());
     }//GEN-LAST:event_btnCurso1ActionPerformed
+
+    private void btnCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso2ActionPerformed
+        // TODO add your handling code here:
+        controlador.abrirTablero(controlador.getCursos().get(1).getId());
+    }//GEN-LAST:event_btnCurso2ActionPerformed
 
     /**
      * @param args the command line arguments
