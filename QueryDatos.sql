@@ -1,3 +1,7 @@
+drop database escuela;
+create database escuela;
+use escuela;
+
 CREATE TABLE IF NOT EXISTS Usuario (
                          id VARCHAR(50) PRIMARY KEY,
                          correo VARCHAR(100) NOT NULL UNIQUE,
@@ -95,7 +99,7 @@ insert into curso values
 
 insert into sesion values
 ('1', 'La Guerra del Pacífico', 'https://youtu.be/baGieJNeZqw?si=esRKoNJAfYmH5Bkp', false, '1'),
-('2', 'El Oncenio de Leguía', 'https://youtu.be/1vV2nnSPvJE?si=pLst3BdGg_fpeZSh', false, '1');
+('2', 'Prehistoria', 'https://youtu.be/jRnD5OezBs0?si=T0j0lfRkHZ25DQ8y', false, '1');
 
 insert into tema values
 ('1', 'La Guerra del Pacífico', 0, '1'),
