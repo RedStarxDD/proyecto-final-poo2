@@ -38,7 +38,7 @@ public class TutoriasVista extends javax.swing.JFrame {
     public void mostrarInfo(){       
         ocultarInfo();
         
-        IntStream.range(9, panels.size()).forEach(i->{
+        IntStream.range(0, panels.size()).forEach(i->{
             JPanel panel=panels.get(i);
             JLabel label=labels.get(i);
             //JButton button=buttons.get(i);

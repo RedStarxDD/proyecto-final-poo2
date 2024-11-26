@@ -35,9 +35,9 @@ public class Mysql {
         return connection;
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Mysql conn=new Mysql();
         conn.getConnection();
-    }
+    }*/
 
 }

@@ -1,17 +1,12 @@
 package Controladores;
 
-import Repositorios.AlumnoRepository;
-import Repositorios.ProfesorRepository;
-import Repositorios.UsuarioRepository;
+import Servicios.UsuarioServicio;
 import Vistas.IniciodeSesiónVista;
 import core.Controller;
 
 public class InicioSesionControlador extends Controller {
     private IniciodeSesiónVista vista;
     private ControladorBase base;
-    private final UsuarioRepository usuarioRepository=new UsuarioRepository();
-    private final AlumnoRepository alumnoRepository=new AlumnoRepository();
-    private final ProfesorRepository profesorRepository=new ProfesorRepository();
 
     @Override
     public void run() {
@@ -29,14 +24,15 @@ public class InicioSesionControlador extends Controller {
 
     public void buscarUsuario(String correo, char[] contra) {
         String contrasena = new String(contra);
+        UsuarioServicio usuarioServicio=new UsuarioServicio();
 
-        if (usuarioRepository.validarLogin(correo, contrasena)) {
-            String id=usuarioRepository.findByCorreo(correo);
+        if (usuarioServicio.validarLogin(correo, contrasena)) {
+            String id=usuarioServicio.buscarPorCorreo(correo);
             
-            if (usuarioRepository.determinarTipoDeUsuario(correo).equalsIgnoreCase("Alumno")) {
-                base.decidirUsuario(alumnoRepository.findById(id).get());
+            if (usuarioServicio.determinarTipoDeUsuario(correo).equalsIgnoreCase("Alumno")) {
+                base.decidirUsuario(usuarioServicio.buscarAlumnoPorId(id));
             } else {
-                base.decidirUsuario(profesorRepository.findById(id).get());
+                base.decidirUsuario(usuarioServicio.buscarProfesorPorId(id));
             }
         } else {
             vista.mostrarAlerta("Usuario o contraseña inválidos");
