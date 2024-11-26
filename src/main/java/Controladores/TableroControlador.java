@@ -41,10 +41,8 @@ public class TableroControlador extends Controller{
         this.curso = curso;
     }
     
-    public void mostrarInfo(String id){
-        Curso curso=new Curso(id, "Razonamiento matemático", null, 0, null);
-        vista.mostrarTitulo(curso.getNombre());
-        //Aqui se buscaría el curso con el id respectivo en la base de datos
+    public void mostrarInfo(String nombre){      
+        vista.mostrarTitulo(nombre);
     }
     
     public void mostrarTemario(String titulo){

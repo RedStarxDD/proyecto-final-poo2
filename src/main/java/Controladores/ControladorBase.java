@@ -19,7 +19,7 @@ public class ControladorBase extends Controller {
     private TableroControlador tableroControlador=new TableroControlador(this);
     private TemarioControlador temarioControlador=new TemarioControlador(this);
     private TutoriasControlador tutoriasControlador=new TutoriasControlador(this);
-    private ProgresoControlador progresoControlador=new ProgresoControlador();
+    private ProgresoControlador progresoControlador=new ProgresoControlador(this);
 
     @Override
     public void run() {
@@ -50,10 +50,10 @@ public class ControladorBase extends Controller {
         cursosControlador.getVista().setVisible(true);
     }
     
-    public void mostrarTablero(String id){
+    public void mostrarTablero(String nombre){
         cursosControlador.getVista().setVisible(false);
         tableroControlador.getVista().setVisible(true);
-        tableroControlador.mostrarInfo(id);
+        tableroControlador.mostrarInfo(nombre);
     }
     
     public void regresarTablero(){
@@ -85,5 +85,12 @@ public class ControladorBase extends Controller {
         
         progresoControlador.getVista().setVisible(true);       
         progresoControlador.getVista().activarBuscador(false);
+    }
+    
+    public void regresarProgreso(){
+        progresoControlador.getVista().setVisible(false);
+        
+        //inicioProfesorControlador.getVista().setVisible(true);
+        tableroControlador.getVista().setVisible(true);
     }
 }

@@ -51,7 +51,7 @@ public class CursosControlador extends Controller{
         //Aquí se llamaría al sql y se retornaría una lista de cursos
     }
     
-    public void abrirTablero(String idCurso){
-        base.mostrarTablero(idCurso);
+    public void abrirTablero(int pos){       
+        base.mostrarTablero(cursos.get(pos).getNombre());
     }
 }

@@ -13,10 +13,15 @@ import core.Controller;
  */
 public class ProgresoControlador extends Controller{
     private Progreso vista;
+    private ControladorBase base;
 
     @Override
     public void run() {
         vista=new Progreso(this);
+    }
+
+    public ProgresoControlador(ControladorBase base) {
+        this.base = base;
     }
 
     public Progreso getVista() {
@@ -25,5 +30,9 @@ public class ProgresoControlador extends Controller{
     
     public void buscarProgreso(){
         
+    }
+    
+    public void mostrarInicio(){
+        base.regresarProgreso();
     }
 }

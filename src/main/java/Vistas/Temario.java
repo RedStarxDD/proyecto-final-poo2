@@ -30,8 +30,15 @@ public class Temario extends javax.swing.JFrame {
     
     public void mostrarInfo(String titulo){
         lblTituloCurso.setText(titulo);
-        for (int i = 0; i < controlador.getTemas().size(); i++) {
-            botones.get(i).setText(controlador.getTemas().get(i).getTitulo());
+        
+        for (int i = 0; i < botones.size(); i++) {
+            JButton boton=botones.get(i);
+            Tema tema=null;
+            
+            if(i<controlador.getTemas().size()) tema=controlador.getTemas().get(i);               
+            
+            if(tema!=null) boton.setText(tema.getTitulo());
+            if(boton.getText().isEmpty()) boton.setVisible(false);
         }
     }
 
@@ -69,19 +76,15 @@ public class Temario extends javax.swing.JFrame {
 
         btnTema4.setBackground(new java.awt.Color(204, 204, 204));
         btnTema4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTema4.setText("TEMA 4: Ejercicio de edades");
 
         btnTema3.setBackground(new java.awt.Color(204, 204, 204));
         btnTema3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTema3.setText("TEMA 3: Ecuaciones");
 
         btnTema2.setBackground(new java.awt.Color(204, 204, 204));
         btnTema2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTema2.setText("TEMA 2: Operación con fracciones");
 
         btnTema1.setBackground(new java.awt.Color(204, 204, 204));
         btnTema1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTema1.setText("TEMA 1: Conteo de Cuadrilateros");
         btnTema1.setToolTipText("");
         btnTema1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +94,6 @@ public class Temario extends javax.swing.JFrame {
 
         btnTema5.setBackground(new java.awt.Color(204, 204, 204));
         btnTema5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTema5.setText("TEMA 5: Operadores matemáticos");
 
         btnRegresar.setBackground(new java.awt.Color(153, 204, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -121,7 +123,7 @@ public class Temario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnTema2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                             .addComponent(btnTema3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTema1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTema1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, Short.MAX_VALUE)
                             .addComponent(btnTema4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnTema5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,15 +144,15 @@ public class Temario extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(lblTituloCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(btnTema1)
+                .addComponent(btnTema1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(btnTema2)
+                .addComponent(btnTema2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(btnTema3)
+                .addComponent(btnTema3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(btnTema4)
+                .addComponent(btnTema4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btnTema5)
+                .addComponent(btnTema5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
                 .addGap(48, 48, 48))

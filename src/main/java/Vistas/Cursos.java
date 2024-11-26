@@ -29,11 +29,21 @@ public class Cursos extends javax.swing.JFrame {
     }
     
     public void mostrarInfo(){       
-        for (int i = 0; i < controlador.getCursos().size(); i++) {
-            botones.get(i).setText(controlador.getCursos().get(i).getNombre());
+        for (int i = 0; i < botones.size(); i++) {
+            JButton boton=botones.get(i);
+            Curso curso=null;
+                    
+            if(i<controlador.getCursos().size()) curso=controlador.getCursos().get(i);               
+            
+            if(curso!=null) boton.setText(curso.getNombre());
+            if(boton.getText().isEmpty()) boton.setVisible(false);
         }        
     }
-
+    
+    public void botonPresionado(int pos){
+        controlador.abrirTablero(pos);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,16 +108,31 @@ public class Cursos extends javax.swing.JFrame {
         btnCurso3.setForeground(new java.awt.Color(255, 255, 255));
         btnCurso3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
         btnCurso3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurso3ActionPerformed(evt);
+            }
+        });
 
         btnCurso4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCurso4.setForeground(new java.awt.Color(255, 255, 255));
         btnCurso4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
         btnCurso4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurso4ActionPerformed(evt);
+            }
+        });
 
         btnCurso5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCurso5.setForeground(new java.awt.Color(255, 255, 255));
         btnCurso5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Degradado2.jpg"))); // NOI18N
         btnCurso5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCurso5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurso5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,13 +218,28 @@ public class Cursos extends javax.swing.JFrame {
 
     private void btnCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso1ActionPerformed
         // TODO add your handling code here:
-        controlador.abrirTablero(controlador.getCursos().get(0).getId());
+        botonPresionado(0);
     }//GEN-LAST:event_btnCurso1ActionPerformed
 
     private void btnCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso2ActionPerformed
         // TODO add your handling code here:
-        controlador.abrirTablero(controlador.getCursos().get(1).getId());
+        botonPresionado(1);
     }//GEN-LAST:event_btnCurso2ActionPerformed
+
+    private void btnCurso3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso3ActionPerformed
+        // TODO add your handling code here:
+        botonPresionado(2);
+    }//GEN-LAST:event_btnCurso3ActionPerformed
+
+    private void btnCurso4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso4ActionPerformed
+        // TODO add your handling code here:
+        botonPresionado(3);
+    }//GEN-LAST:event_btnCurso4ActionPerformed
+
+    private void btnCurso5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurso5ActionPerformed
+        // TODO add your handling code here:
+        botonPresionado(4);
+    }//GEN-LAST:event_btnCurso5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,11 +269,11 @@ public class Cursos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Cursos(null).setVisible(true);
             }
-        });*/
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

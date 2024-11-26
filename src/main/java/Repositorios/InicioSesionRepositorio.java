@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class InicioSesionRepositorio implements Model{
-
+    
     // Método para validar el login usando PreparedStatement para mayor seguridad
     public static boolean validarLogin(String txtUser, String txtPass) {
         Mysql mysql = new Mysql();
