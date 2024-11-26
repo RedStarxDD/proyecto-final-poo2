@@ -7,6 +7,8 @@ package Controladores;
 import Modelos.Alumno;
 import Modelos.Curso;
 import Modelos.Usuario;
+import Repositorios.AlumnoRepository;
+import Repositorios.CursoRepository;
 import Vistas.Cursos;
 import core.Controller;
 import java.util.List;
@@ -41,17 +43,13 @@ public class CursosControlador extends Controller{
         this.cursos = cursos;
     }
 
-    public void listarCursos(){
-        List<Curso> cursosTemp;
-        Curso curso1=new Curso("1", "Razonamiento matemático", null, 0, null);
-        Curso curso2=new Curso("2", "Historia", null, 0, null);
-        cursosTemp=List.of(curso1, curso2);
-        cursos=cursosTemp;
+    public void listarCursos(String id){
+        AlumnoRepository alumnoRepository=new AlumnoRepository();
+        cursos=alumnoRepository.obtenerCursosAlumno(id);
         vista.mostrarInfo();
-        //Aquí se llamaría al sql y se retornaría una lista de cursos
     }
     
     public void abrirTablero(int pos){       
-        base.mostrarTablero(cursos.get(pos).getNombre());
+        base.mostrarTablero(cursos.get(pos));
     }
 }

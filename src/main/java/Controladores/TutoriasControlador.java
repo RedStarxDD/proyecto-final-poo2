@@ -4,7 +4,9 @@
  */
 package Controladores;
 
+import Modelos.Curso;
 import Modelos.Sesion;
+import Repositorios.SesionRepository;
 import Vistas.Tutorias;
 import core.Controller;
 import java.util.List;
@@ -35,12 +37,9 @@ public class TutoriasControlador extends Controller{
         return sesiones;
     }
     
-    public void listarSesiones(){
-        List<Sesion> sesionesTemp;
-        Sesion sesion1=new Sesion("1", "Conteo de cuadriláteros", "", false);
-        Sesion sesion2=new Sesion("2", "Operaciones con fracciones", "", false);
-        sesionesTemp=List.of(sesion1,sesion2);
-        sesiones=sesionesTemp;
+    public void listarSesiones(Curso curso){
+        SesionRepository sesionRepository=new SesionRepository();       
+        sesiones=sesionRepository.findByCursoId(curso.getId());
         vista.mostrarInfo();
     }
     

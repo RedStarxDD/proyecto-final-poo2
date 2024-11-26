@@ -4,8 +4,12 @@
  */
 package Controladores;
 
+import Modelos.Alumno;
+import Modelos.Curso;
+import Repositorios.CursoRepository;
 import Vistas.Progreso;
 import core.Controller;
+import java.util.List;
 
 /**
  *
@@ -28,7 +32,11 @@ public class ProgresoControlador extends Controller{
         return vista;
     }
     
-    public void buscarProgreso(){
+    public void buscarProgreso(Alumno alumno){
+        vista.eliimarFilas();
+        for (Curso curso : alumno.getCursos()) {
+            vista.añadirFilas(curso.getNombre(), curso.getProgreso());
+        }       
         
     }
     

@@ -5,7 +5,6 @@
 package Main;
 
 import Controladores.ControladorBase;
-import Repositorios.InicioSesionRepositorio;
 
 /**
  *
@@ -14,8 +13,12 @@ import Repositorios.InicioSesionRepositorio;
 public class Main {
 
     public static void main(String[] args) {
+        /*AlumnoRepository alumnoRepository=new AlumnoRepository();
+        alumnoRepository.create(new Alumno(null,"1","romer@gmail.com","contra","jose perales"));
+        ProfesorRepository profesorRepository=new ProfesorRepository();
+        profesorRepository.create(new Profesor(new ArrayList<>(),"2","jose@gmail.com","contra","manuel"));*/
+                
         ControladorBase controladorBase=new ControladorBase();
         controladorBase.run();
-        
     }
 }

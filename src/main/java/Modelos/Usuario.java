@@ -9,7 +9,10 @@ package Modelos;
  * @author user
  */
 public class Usuario {
-    private String id, correo, contrasena, nombre;
+    private String id;
+    private String correo;
+    private String contrasena;
+    private String nombre;
 
     public Usuario(String id, String correo, String contrasena, String nombre) {
         this.id = id;
@@ -18,6 +21,7 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    // Getters y Setters
     public String getId() {
         return id;
     }
@@ -49,6 +53,16 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    // Método para validar el correo
+    public boolean tieneCorreoValido() {
+        return correo != null && correo.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    // Método para validar la contraseña (ejemplo: mínimo 8 caracteres)
+    public boolean tieneContrasenaValida() {
+        return contrasena != null && contrasena.length() >= 8;
+    }
+
+
 }

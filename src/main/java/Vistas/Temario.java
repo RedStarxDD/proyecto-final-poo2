@@ -30,6 +30,7 @@ public class Temario extends javax.swing.JFrame {
     
     public void mostrarInfo(String titulo){
         lblTituloCurso.setText(titulo);
+        ocultarInfo();
         
         for (int i = 0; i < botones.size(); i++) {
             JButton boton=botones.get(i);
@@ -37,9 +38,18 @@ public class Temario extends javax.swing.JFrame {
             
             if(i<controlador.getTemas().size()) tema=controlador.getTemas().get(i);               
             
-            if(tema!=null) boton.setText(tema.getTitulo());
-            if(boton.getText().isEmpty()) boton.setVisible(false);
+            if(tema!=null){
+                boton.setVisible(true);
+                boton.setText(tema.getTitulo());
+            }
+            //if(boton.getText().isEmpty()) boton.setVisible(false);
         }
+    }
+    
+    public void ocultarInfo(){
+        for (JButton b : botones) {
+            b.setVisible(false);
+        }        
     }
 
     /**
@@ -76,12 +86,27 @@ public class Temario extends javax.swing.JFrame {
 
         btnTema4.setBackground(new java.awt.Color(204, 204, 204));
         btnTema4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTema4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTema4ActionPerformed(evt);
+            }
+        });
 
         btnTema3.setBackground(new java.awt.Color(204, 204, 204));
         btnTema3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTema3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTema3ActionPerformed(evt);
+            }
+        });
 
         btnTema2.setBackground(new java.awt.Color(204, 204, 204));
         btnTema2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTema2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTema2ActionPerformed(evt);
+            }
+        });
 
         btnTema1.setBackground(new java.awt.Color(204, 204, 204));
         btnTema1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -94,6 +119,11 @@ public class Temario extends javax.swing.JFrame {
 
         btnTema5.setBackground(new java.awt.Color(204, 204, 204));
         btnTema5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTema5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTema5ActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setBackground(new java.awt.Color(153, 204, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -179,8 +209,28 @@ public class Temario extends javax.swing.JFrame {
 
     private void btnTema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTema1ActionPerformed
         // TODO add your handling code here:
-        //controlador.mostrarTutorias();
+        controlador.mostrarPreguntas(0);
     }//GEN-LAST:event_btnTema1ActionPerformed
+
+    private void btnTema2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTema2ActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarPreguntas(1);
+    }//GEN-LAST:event_btnTema2ActionPerformed
+
+    private void btnTema3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTema3ActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarPreguntas(2);
+    }//GEN-LAST:event_btnTema3ActionPerformed
+
+    private void btnTema4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTema4ActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarPreguntas(3);
+    }//GEN-LAST:event_btnTema4ActionPerformed
+
+    private void btnTema5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTema5ActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarPreguntas(4);
+    }//GEN-LAST:event_btnTema5ActionPerformed
 
     /**
      * @param args the command line arguments

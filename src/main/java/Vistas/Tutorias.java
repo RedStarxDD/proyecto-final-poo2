@@ -34,7 +34,9 @@ public class Tutorias extends javax.swing.JFrame {
         //buttons=List.of(btnVideo1,btnVideo2,btnVideo3,btnVideo4,btnVideo5);
     }
     
-    public void mostrarInfo(){
+    public void mostrarInfo(){       
+        ocultarInfo();
+        
         for (int i = 0; i < panels.size(); i++) {
             JPanel panel=panels.get(i);
             JLabel label=labels.get(i);
@@ -44,10 +46,17 @@ public class Tutorias extends javax.swing.JFrame {
             if(i<controlador.getSesiones().size()) sesion=controlador.getSesiones().get(i);               
             
             if(sesion!=null){
+                panel.setVisible(true);
                 label.setText("SESIÓN "+(i+1)+": "+controlador.getSesiones().get(i).getTitulo());
             }
-            if(label.getText().isEmpty()) panel.setVisible(false);
+            //if(label.getText().isEmpty()) panel.setVisible(false);
         }
+    }
+    
+    public void ocultarInfo(){
+        for (JPanel p : panels) {
+            p.setVisible(false);
+        }        
     }
 
     /**

@@ -4,15 +4,15 @@
  */
 package Controladores;
 
-import Repositorios.InicioSesionRepositorio;
 import Modelos.Alumno;
+import Modelos.Curso;
 import Modelos.Profesor;
+import Modelos.Tema;
 import Modelos.Usuario;
 import core.Controller;
 
 
 public class ControladorBase extends Controller {
-
     private InicioSesionControlador inicioSesionControlador = new InicioSesionControlador(this);
     private InicioProfesorControlador inicioProfesorControlador = new InicioProfesorControlador(this);
     private CursosControlador cursosControlador = new CursosControlador(this);
@@ -20,6 +20,11 @@ public class ControladorBase extends Controller {
     private TemarioControlador temarioControlador=new TemarioControlador(this);
     private TutoriasControlador tutoriasControlador=new TutoriasControlador(this);
     private ProgresoControlador progresoControlador=new ProgresoControlador(this);
+    private PreguntasControlador preguntasControlador=new PreguntasControlador(this);
+    
+    private Usuario usuario;
+    private Curso curso;
+    private Tema tema;
 
     @Override
     public void run() {
@@ -30,15 +35,16 @@ public class ControladorBase extends Controller {
         temarioControlador.run();
         tutoriasControlador.run();
         progresoControlador.run();
+        preguntasControlador.run();
     }
 
-    public void decidirUsuario(Usuario usuario) {
+    public void decidirUsuario(Usuario user) {
         inicioSesionControlador.getVista().setVisible(false);
-        String correo = usuario.getCorreo();
+        this.usuario=user;
         
         if (usuario instanceof Alumno) {
             //Aquí buscariamos los cursos del usuario y se lo pasaríamos al controlador
-            cursosControlador.listarCursos();
+            cursosControlador.listarCursos(usuario.getId());
             cursosControlador.getVista().setVisible(true);
         } else {
             inicioProfesorControlador.getVista().setVisible(true);
@@ -50,10 +56,11 @@ public class ControladorBase extends Controller {
         cursosControlador.getVista().setVisible(true);
     }
     
-    public void mostrarTablero(String nombre){
+    public void mostrarTablero(Curso c){
         cursosControlador.getVista().setVisible(false);
+        this.curso=c;
         tableroControlador.getVista().setVisible(true);
-        tableroControlador.mostrarInfo(nombre);
+        tableroControlador.mostrarInfo(c);
     }
     
     public void regresarTablero(){
@@ -64,17 +71,21 @@ public class ControladorBase extends Controller {
         tableroControlador.getVista().setVisible(true);
     }
     
-    public void mostrarTemario(String titulo){
-        tableroControlador.getVista().setVisible(false);
+    public void mostrarTemario(){
+        if(tableroControlador.getVista().isVisible())
+            tableroControlador.getVista().setVisible(false);
+        if(preguntasControlador.getVista().isVisible())
+            preguntasControlador.getVista().setVisible(false);
+        
         temarioControlador.getVista().setVisible(true);
-        temarioControlador.mostrarInfo(titulo);
+        temarioControlador.mostrarInfo(curso);
         //Aquí buscaríamos los temas del curso y se lo pasaríamos al controlador
     }
         
     public void mostrarTutorias(){
         tableroControlador.getVista().setVisible(false);
         tutoriasControlador.getVista().setVisible(true);
-        tutoriasControlador.listarSesiones();
+        tutoriasControlador.listarSesiones(curso);
     }
     
     public void mostrarProgreso(){
@@ -83,14 +94,33 @@ public class ControladorBase extends Controller {
         if(inicioProfesorControlador.getVista().isVisible())
             inicioProfesorControlador.getVista().setVisible(false);
         
-        progresoControlador.getVista().setVisible(true);       
-        progresoControlador.getVista().activarBuscador(false);
+        if(usuario instanceof Profesor)
+            progresoControlador.getVista().activarBuscador(true);
+        else{
+            progresoControlador.getVista().activarBuscador(false);
+            progresoControlador.buscarProgreso((Alumno) usuario);
+        }
+        
+        progresoControlador.getVista().setVisible(true);
     }
     
     public void regresarProgreso(){
         progresoControlador.getVista().setVisible(false);
         
-        //inicioProfesorControlador.getVista().setVisible(true);
-        tableroControlador.getVista().setVisible(true);
+        if(usuario instanceof Profesor)
+            inicioProfesorControlador.getVista().setVisible(true);
+        else
+            tableroControlador.getVista().setVisible(true);
+    }
+    
+    public void mostrarPreguntas(Tema t){
+        this.tema=t;
+        if(tema.getPreguntas().isEmpty()){
+            preguntasControlador.getVista().mostrarAlerta();
+        }else{
+            temarioControlador.getVista().setVisible(false);
+            preguntasControlador.getVista().setVisible(true);
+            preguntasControlador.listarPreguntas(tema);           
+        }
     }
 }

@@ -5,6 +5,7 @@
 package Vistas;
 
 import Controladores.ProgresoControlador;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,15 +17,35 @@ public class Progreso extends javax.swing.JFrame {
      * Creates new form ProgresoProfesor
      */
     private ProgresoControlador controlador;
+    private DefaultTableModel model;
     
     public Progreso(ProgresoControlador controlador) {
         this.controlador=controlador;
+        model=new DefaultTableModel(
+            new Object [][] {},
+            new String [] {"Curso", "Progreso"}
+        ) {
+            // Sobrescribir el método isCellEditable
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Ninguna celda es editable
+                return false;
+            }
+        };
         initComponents();
     }
     
     public void activarBuscador(boolean activar){
         lblAlumno.setVisible(activar);
         txtNombre.setVisible(activar);
+    }
+    
+    public void añadirFilas(String nombre, double progreso){
+        model.addRow(new Object[]{nombre, progreso});
+    }
+    
+    public void eliimarFilas(){
+        model.setRowCount(0);
     }
 
     /**
@@ -63,17 +84,7 @@ public class Progreso extends javax.swing.JFrame {
         txtNombre.setForeground(new java.awt.Color(204, 204, 204));
         txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(model);
         jScrollPane1.setViewportView(jTable1);
 
         btnBuscar.setBackground(new java.awt.Color(51, 204, 0));
@@ -157,7 +168,7 @@ public class Progreso extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        controlador.buscarProgreso();
+        //controlador.buscarProgreso();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

@@ -18,7 +18,6 @@ import java.util.List;
 public class TableroControlador extends Controller{
     private Tablero vista;
     private ControladorBase base;
-    private Curso curso;
     
     @Override
     public void run() {
@@ -32,21 +31,13 @@ public class TableroControlador extends Controller{
     public Tablero getVista() {
         return vista;
     }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    
+    public void mostrarInfo(Curso curso){      
+        vista.mostrarTitulo(curso.getNombre());
     }
     
-    public void mostrarInfo(String nombre){      
-        vista.mostrarTitulo(nombre);
-    }
-    
-    public void mostrarTemario(String titulo){
-        base.mostrarTemario(titulo);
+    public void mostrarTemario(){
+        base.mostrarTemario();
     }
     public void mostrarCursos(){
         base.regresarCursos();

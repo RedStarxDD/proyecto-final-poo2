@@ -198,7 +198,7 @@ public class Tablero extends javax.swing.JFrame {
 
     private void btnCuestionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuestionariosActionPerformed
         // TODO add your handling code here:
-        controlador.mostrarTemario(titulo);
+        controlador.mostrarTemario();
     }//GEN-LAST:event_btnCuestionariosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

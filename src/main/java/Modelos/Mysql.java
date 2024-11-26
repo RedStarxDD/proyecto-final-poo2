@@ -19,14 +19,14 @@ public class Mysql {
 
     public Connection getConnection() {
 
-        String databaseName="test";
+        String databaseName="escuela";
         String databaseUser="root";
         String databasePassword="";
         String url="jdbc:mysql://localhost:3307/"+databaseName;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection= DriverManager.getConnection(url,databaseUser,databasePassword);
-            System.out.println("connection Succesful");
+            //System.out.println("connection Succesful");
         }catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -35,9 +35,9 @@ public class Mysql {
         return connection;
     }
     
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Mysql conn=new Mysql();
         conn.getConnection();
-    }*/
+    }
 
 }

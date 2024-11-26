@@ -1,26 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controladores;
 
 import Modelos.Alumno;
 import Modelos.Profesor;
-import Repositorios.InicioSesionRepositorio;
-import core.Controller;
+import Modelos.Usuario;
+import Repositorios.AlumnoRepository;
+import Repositorios.ProfesorRepository;
+import Repositorios.UsuarioRepository;
 import Vistas.IniciodeSesión;
+import core.Controller;
 
-/**
- *
- * @author user
- */
-public class InicioSesionControlador extends Controller{
+public class InicioSesionControlador extends Controller {
     private IniciodeSesión vista;
     private ControladorBase base;
+    private final UsuarioRepository usuarioRepository=new UsuarioRepository();
+    private final AlumnoRepository alumnoRepository=new AlumnoRepository();
+    private final ProfesorRepository profesorRepository=new ProfesorRepository();
 
     @Override
     public void run() {
-        vista=new IniciodeSesión(this);
+        vista = new IniciodeSesión(this);
         vista.setVisible(true);
     }
 
@@ -31,18 +29,27 @@ public class InicioSesionControlador extends Controller{
     public IniciodeSesión getVista() {
         return vista;
     }
-    
-    public void buscarUsuario(String usuario, char[] contra){
-        String contrasena=new String(contra);
-        
-        if (InicioSesionRepositorio.validarLogin(usuario, contrasena)) {
-            if (InicioSesionRepositorio.determinarTipoDeUsuario(usuario).equalsIgnoreCase("Alumno")) {
-                base.decidirUsuario(new Alumno(null, "1", usuario, contrasena, "Dante"));            
+
+    public void buscarUsuario(String correo, char[] contra) {
+        String contrasena = new String(contra);
+
+        if (usuarioRepository.validarLogin(correo, contrasena)) {
+            String id=usuarioRepository.findByCorreo(correo);
+            
+            if (usuarioRepository.determinarTipoDeUsuario(correo).equalsIgnoreCase("Alumno")) {
+                base.decidirUsuario(alumnoRepository.findById(id).get());
             } else {
-                base.decidirUsuario(new Profesor(null, "1", usuario, contrasena, "Gianny"));
+                base.decidirUsuario(profesorRepository.findById(id).get());
             }
-        }else{
+        } else {
             System.out.println("No se encontró ningún usuario");
         }
+    }
+    
+    public void alertarUsuario(String message){
+        vista.alertaUsuario(message);
+    }
+    public void alertarContra(String message){
+        vista.alertaContra(message);
     }
 }

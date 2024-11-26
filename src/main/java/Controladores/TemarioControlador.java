@@ -6,6 +6,7 @@ package Controladores;
 
 import Modelos.Curso;
 import Modelos.Tema;
+import Repositorios.TemaRepository;
 import Vistas.Temario;
 import core.Controller;
 import java.util.List;
@@ -36,19 +37,16 @@ public class TemarioControlador extends Controller{
         return temas;
     }
     
-    public void mostrarInfo(String titulo){
-        List<Tema> temasTemp;
-        Tema tema1=new Tema("1", "Conteo de cuadriláteros", null, 0);
-        Tema tema2=new Tema("2", "Fracciones", null, 0);
-        temasTemp=List.of(tema1,tema2);
-        temas=temasTemp;
-        vista.mostrarInfo(titulo);
+    public void mostrarInfo(Curso curso){
+        TemaRepository temaRepository=new TemaRepository();
+        temas=temaRepository.findByCursoId(curso.getId());
+        vista.mostrarInfo(curso.getNombre());
     }
     
     public void mostrarTablero(){
         base.regresarTablero();
     }
-    public void mostrarTutorias(){
-        base.mostrarTutorias();
+    public void mostrarPreguntas(int pos){
+        base.mostrarPreguntas(temas.get(pos));
     }
 }
