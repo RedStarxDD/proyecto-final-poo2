@@ -6,6 +6,7 @@ package Controladores;
 
 import Modelos.Pregunta;
 import Modelos.Tema;
+import Repositorios.CursoProgressManager;
 import Repositorios.PreguntaRepository;
 import Vistas.PreguntasVista;
 import core.Controller;
@@ -43,7 +44,9 @@ public class PreguntasControlador extends Controller{
         vista.mostrarInfo();            
     }
     
-    public void aumentarProgreso(){
+    public void aumentarProgreso(int contador){
+        CursoProgressManager cursoProgressManager=new CursoProgressManager();
+        cursoProgressManager.marcarPreguntaCompletada(preguntas.get(contador-1).getId());
         
     }
     

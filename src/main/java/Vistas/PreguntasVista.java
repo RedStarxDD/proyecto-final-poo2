@@ -6,6 +6,7 @@ package Vistas;
 
 import Controladores.PreguntasControlador;
 import Modelos.Pregunta;
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
@@ -37,16 +38,43 @@ public class PreguntasVista extends javax.swing.JFrame {
         
         lblNumEjercicio.setText("Ejercicio "+contador);
         lblEnunciado.setText(pregunta.getEnunciado());
+        radioBtn1.setEnabled(true);
+        radioBtn2.setEnabled(true);
+        radioBtn3.setEnabled(true);            
         radioBtn1.setText(pregunta.getAlternativas()[0]);
         radioBtn2.setText(pregunta.getAlternativas()[1]);
         radioBtn3.setText(pregunta.getAlternativas()[2]);
         lblCorrecta.setText(pregunta.getAlternativas()[pregunta.getRespuesta()-1]);
-        lblCorrecta.setVisible(false);
-        lblRespuesta.setVisible(false);
+        
+        if(!pregunta.isCompleto()){
+            lblCorrecta.setVisible(false);
+            lblRespuesta.setVisible(false);  
+        }else{
+            radioBtn1.setEnabled(false);
+            radioBtn2.setEnabled(false);
+            radioBtn3.setEnabled(false);            
+        }
     }
     
-    public void mostrarAlerta(){
-        JOptionPane.showMessageDialog(this, "No hay preguntas disponibles");
+    public void mostrarAlerta(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public void verificarRespuesta(int res){
+        if(controlador.getPreguntas().get(contador-1).getRespuesta()==res){
+            mostrarAlerta("Respuesta correcta");
+            
+            btnEntregar.setText("SIGUIENTE");
+            lblRespuesta.setVisible(true);
+            lblCorrecta.setVisible(true);
+            radioBtn1.setEnabled(false);
+            radioBtn2.setEnabled(false);
+            radioBtn3.setEnabled(false);
+
+            controlador.getPreguntas().get(contador-1).setCompleto(true);                       
+        }else{
+            mostrarAlerta("Respuesta incorrecta. Intenta nuevamente");
+        }
     }
     
     /**
@@ -191,19 +219,10 @@ public class PreguntasVista extends javax.swing.JFrame {
 
     private void btnEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntregarActionPerformed
         // TODO add your handling code here:
-        /*if(radioBtn1.isSelected()){
-            JOptionPane.showMessageDialog(null, "Selecciono la opcion 1");
-        }else if(radioBtn2.isSelected()){
-            JOptionPane.showMessageDialog(null, "Selecciono la opcion 2");
-        }else if(radioBtn3.isSelected()){
-            JOptionPane.showMessageDialog(null, "Selecciono la opcion 3");            
-        }*/        
         if(controlador.getPreguntas().get(contador-1).isCompleto()){
             btnEntregar.setText("ENTREGAR");
-            lblRespuesta.setVisible(false);
-            lblCorrecta.setVisible(false);
+            controlador.aumentarProgreso(contador);
             contador++;
-            controlador.aumentarProgreso();
            
             if(contador<=controlador.getPreguntas().size()) mostrarInfo();   
             else{
@@ -212,12 +231,16 @@ public class PreguntasVista extends javax.swing.JFrame {
             }
             
         }else{
-            btnEntregar.setText("SIGUIENTE");
-            lblRespuesta.setVisible(true);
-            lblCorrecta.setVisible(true);
-            controlador.getPreguntas().get(contador-1).setCompleto(true);
-        }
-        
+            if (radioBtn1.isSelected()) {
+                verificarRespuesta(1);
+            } else if (radioBtn2.isSelected()) {
+                verificarRespuesta(2);
+            } else if (radioBtn3.isSelected()) {
+                verificarRespuesta(3);
+            }else{
+                mostrarAlerta("No ha seleccionado ninguna alternativa");
+            }       
+        }      
     }//GEN-LAST:event_btnEntregarActionPerformed
 
     /**

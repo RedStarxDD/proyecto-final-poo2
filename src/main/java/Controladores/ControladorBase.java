@@ -116,7 +116,7 @@ public class ControladorBase extends Controller {
     public void mostrarPreguntas(Tema t){
         this.tema=t;
         if(tema.getPreguntas().isEmpty()){
-            preguntasControlador.getVista().mostrarAlerta();
+            preguntasControlador.getVista().mostrarAlerta("No se ha encontrado ninguna pregunta");
         }else{
             temarioControlador.getVista().setVisible(false);
             preguntasControlador.getVista().setVisible(true);
