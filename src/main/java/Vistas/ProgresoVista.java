@@ -39,10 +39,11 @@ public class ProgresoVista extends javax.swing.JFrame {
     public void activarBuscador(boolean activar){
         lblAlumno.setVisible(activar);
         txtNombre.setVisible(activar);
+        btnBuscar.setVisible(activar);
     }
     
     public void añadirFilas(String nombre, double progreso){
-        model.addRow(new Object[]{nombre, progreso});
+        model.addRow(new Object[]{nombre, progreso+"%"});
     }
     
     public void eliimarFilas(){

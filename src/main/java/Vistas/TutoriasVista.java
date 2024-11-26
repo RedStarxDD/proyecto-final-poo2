@@ -7,6 +7,7 @@ package Vistas;
 import Controladores.TutoriasControlador;
 import Modelos.Sesion;
 import java.util.List;
+import java.util.stream.IntStream;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,7 +38,7 @@ public class TutoriasVista extends javax.swing.JFrame {
     public void mostrarInfo(){       
         ocultarInfo();
         
-        for (int i = 0; i < panels.size(); i++) {
+        IntStream.range(9, panels.size()).forEach(i->{
             JPanel panel=panels.get(i);
             JLabel label=labels.get(i);
             //JButton button=buttons.get(i);
@@ -48,15 +49,15 @@ public class TutoriasVista extends javax.swing.JFrame {
             if(sesion!=null){
                 panel.setVisible(true);
                 label.setText("SESIÓN "+(i+1)+": "+controlador.getSesiones().get(i).getTitulo());
-            }
-            //if(label.getText().isEmpty()) panel.setVisible(false);
-        }
+            }            
+        });
     }
     
     public void ocultarInfo(){
-        for (JPanel p : panels) {
+        /*for (JPanel p : panels) {
             p.setVisible(false);
-        }        
+        }*/    
+        panels.forEach(p->p.setVisible(false));
     }
 
     /**

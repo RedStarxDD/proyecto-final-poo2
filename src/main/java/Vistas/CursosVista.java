@@ -7,6 +7,7 @@ package Vistas;
 import Controladores.CursosControlador;
 import Modelos.Curso;
 import java.util.List;
+import java.util.stream.IntStream;
 import javax.swing.JButton;
 
 /**
@@ -28,16 +29,16 @@ public class CursosVista extends javax.swing.JFrame {
         botones=List.of(btnCurso1,btnCurso2,btnCurso3,btnCurso4,btnCurso5);       
     }
     
-    public void mostrarInfo(){       
-        for (int i = 0; i < botones.size(); i++) {
+    public void mostrarInfo(){
+        IntStream.range(0, botones.size()).forEach(i->{
             JButton boton=botones.get(i);
             Curso curso=null;
                     
             if(i<controlador.getCursos().size()) curso=controlador.getCursos().get(i);               
             
             if(curso!=null) boton.setText(curso.getNombre());
-            if(boton.getText().isEmpty()) boton.setVisible(false);
-        }        
+            if(boton.getText().isEmpty()) boton.setVisible(false);            
+        });
     }
     
     public void botonPresionado(int pos){

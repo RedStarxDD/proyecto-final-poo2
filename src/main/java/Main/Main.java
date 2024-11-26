@@ -19,8 +19,8 @@ public class Main {
         ProfesorRepository profesorRepository=new ProfesorRepository();
         profesorRepository.create(new Profesor(new ArrayList<>(),"2","jose@gmail.com","contra","manuel"));*/
         
-        /*CursoProgressManager cursoProgressManager=new CursoProgressManager();
-        cursoProgressManager.reiniciarProgresoCurso("1");*/
+        CursoProgressManager cursoProgressManager=new CursoProgressManager();
+        cursoProgressManager.reiniciarProgresoCurso("1");
                 
         ControladorBase controladorBase=new ControladorBase();
         controladorBase.run();

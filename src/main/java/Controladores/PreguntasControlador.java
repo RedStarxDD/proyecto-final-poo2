@@ -8,6 +8,7 @@ import Modelos.Pregunta;
 import Modelos.Tema;
 import Repositorios.CursoProgressManager;
 import Repositorios.PreguntaRepository;
+import Servicios.CursoServicio;
 import Vistas.PreguntasVista;
 import core.Controller;
 import java.util.List;
@@ -20,6 +21,7 @@ public class PreguntasControlador extends Controller{
     private PreguntasVista vista;
     private ControladorBase base;
     private List<Pregunta> preguntas;
+    private CursoServicio cursoServicio;
     
     @Override
     public void run() {
@@ -28,6 +30,7 @@ public class PreguntasControlador extends Controller{
 
     public PreguntasControlador(ControladorBase base) {
         this.base = base;
+        cursoServicio=new CursoServicio();
     }
 
     public PreguntasVista getVista() {
@@ -39,14 +42,12 @@ public class PreguntasControlador extends Controller{
     }
       
     public void listarPreguntas(Tema tema){
-        PreguntaRepository preguntaRepository=new PreguntaRepository();
-        preguntas=preguntaRepository.findByTemaId(tema.getId());
+        preguntas=cursoServicio.buscarPreguntaPorIdTema(tema.getId());
         vista.mostrarInfo();            
     }
     
     public void aumentarProgreso(int contador){
-        CursoProgressManager cursoProgressManager=new CursoProgressManager();
-        cursoProgressManager.marcarPreguntaCompletada(preguntas.get(contador-1).getId());
+        cursoServicio.marcarPreguntaCompletada(preguntas.get(contador-1).getId());
         
     }
     

@@ -39,14 +39,11 @@ public class InicioSesionControlador extends Controller {
                 base.decidirUsuario(profesorRepository.findById(id).get());
             }
         } else {
-            System.out.println("No se encontró ningún usuario");
+            vista.mostrarAlerta("Usuario o contraseña inválidos");
         }
     }
     
     public void alertarUsuario(String message){
-        vista.alertaUsuario(message);
-    }
-    public void alertarContra(String message){
-        vista.alertaContra(message);
+        vista.mostrarAlerta(message);
     }
 }

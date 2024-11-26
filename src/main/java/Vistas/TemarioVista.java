@@ -7,6 +7,7 @@ package Vistas;
 import Controladores.TemarioControlador;
 import Modelos.Tema;
 import java.util.List;
+import java.util.stream.IntStream;
 import javax.swing.JButton;
 
 /**
@@ -28,7 +29,7 @@ public class TemarioVista extends javax.swing.JFrame {
         botones=List.of(btnTema1, btnTema2, btnTema3, btnTema4,btnTema5);
     }
     
-    public void mostrarInfo(String titulo){
+    /*public void mostrarInfo(String titulo){
         lblTituloCurso.setText(titulo);
         ocultarInfo();
         
@@ -44,12 +45,31 @@ public class TemarioVista extends javax.swing.JFrame {
             }
             //if(boton.getText().isEmpty()) boton.setVisible(false);
         }
-    }
+    }*/
     
+    public void mostrarInfo(String titulo){
+        lblTituloCurso.setText(titulo);
+        ocultarInfo();
+        
+        IntStream.range(0, botones.size()).forEach(i -> {
+            JButton boton = botones.get(i);
+            Tema tema = null;
+
+            if (i < controlador.getTemas().size()) {
+                tema = controlador.getTemas().get(i);
+            }
+
+            if (tema != null) {
+                boton.setVisible(true);
+                boton.setText(tema.getTitulo());
+            }
+        });    
+    }
     public void ocultarInfo(){
-        for (JButton b : botones) {
+        /*for (JButton b : botones) {
             b.setVisible(false);
-        }        
+        }*/
+        botones.forEach(b -> b.setVisible(false));
     }
 
     /**

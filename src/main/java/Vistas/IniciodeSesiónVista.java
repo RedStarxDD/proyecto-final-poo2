@@ -24,11 +24,7 @@ public class IniciodeSesiónVista extends javax.swing.JFrame{
         initComponents();
     }
     
-    public void alertaUsuario(String message){
-        JOptionPane.showMessageDialog(this, message);
-    }
-    
-    public void alertaContra(String message){
+    public void mostrarAlerta(String message){
         JOptionPane.showMessageDialog(this, message);
     }
 
@@ -175,9 +171,9 @@ public class IniciodeSesiónVista extends javax.swing.JFrame{
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         if (txtUsuario.getText().trim().isEmpty()) {
-            alertaUsuario("Usuario vacío");
+            mostrarAlerta("Usuario vacío");
         }else if (txtContrasena.getPassword().length==0){
-            alertaContra("Contraseña vacía");
+            mostrarAlerta("Contraseña vacía");
         }else{
             controlador.buscarUsuario(txtUsuario.getText(), txtContrasena.getPassword());
         }

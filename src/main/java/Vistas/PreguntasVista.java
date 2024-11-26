@@ -50,6 +50,8 @@ public class PreguntasVista extends javax.swing.JFrame {
             lblCorrecta.setVisible(false);
             lblRespuesta.setVisible(false);  
         }else{
+            lblRespuesta.setVisible(true);
+            lblCorrecta.setVisible(true);
             radioBtn1.setEnabled(false);
             radioBtn2.setEnabled(false);
             radioBtn3.setEnabled(false);            
@@ -70,7 +72,9 @@ public class PreguntasVista extends javax.swing.JFrame {
             radioBtn1.setEnabled(false);
             radioBtn2.setEnabled(false);
             radioBtn3.setEnabled(false);
-
+            buttonGroup1.clearSelection();
+            
+            controlador.aumentarProgreso(contador);
             controlador.getPreguntas().get(contador-1).setCompleto(true);                       
         }else{
             mostrarAlerta("Respuesta incorrecta. Intenta nuevamente");
@@ -214,22 +218,21 @@ public class PreguntasVista extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        controlador.mostrarTemas();
+        contador=1;
+        controlador.mostrarTemas();      
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntregarActionPerformed
         // TODO add your handling code here:
         if(controlador.getPreguntas().get(contador-1).isCompleto()){
             btnEntregar.setText("ENTREGAR");
-            controlador.aumentarProgreso(contador);
             contador++;
            
             if(contador<=controlador.getPreguntas().size()) mostrarInfo();   
             else{
                 contador=1;
                 controlador.mostrarTemas();
-            }
-            
+            }           
         }else{
             if (radioBtn1.isSelected()) {
                 verificarRespuesta(1);

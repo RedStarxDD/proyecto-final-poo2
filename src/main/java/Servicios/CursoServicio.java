@@ -7,6 +7,7 @@ package Servicios;
 import Modelos.Pregunta;
 import Modelos.Sesion;
 import Modelos.Tema;
+import Repositorios.CursoProgressManager;
 import Repositorios.PreguntaRepository;
 import Repositorios.SesionRepository;
 import Repositorios.TemaRepository;
@@ -20,11 +21,13 @@ public class CursoServicio {
     private TemaRepository temaRepository;
     private PreguntaRepository preguntaRepository;
     private SesionRepository sesionRepository;
+    private CursoProgressManager cursoProgressManager;
 
     public CursoServicio() {
         this.temaRepository=new TemaRepository();
         this.preguntaRepository=new PreguntaRepository();
         this.sesionRepository=new SesionRepository();
+        this.cursoProgressManager=new CursoProgressManager();
     }
     
     public List<Tema> buscarTemaPorIdCurso(String cursoId) {
@@ -37,6 +40,10 @@ public class CursoServicio {
 
     public List<Sesion> buscarSesionPorIdCurso(String cursoId) {
         return sesionRepository.findByCursoId(cursoId);
+    }
+    
+    public boolean marcarPreguntaCompletada(String preguntaId) {
+        return cursoProgressManager.marcarPreguntaCompletada(preguntaId);
     }
 
 }
