@@ -7,8 +7,11 @@ package Controladores;
 import Modelos.Curso;
 import Modelos.Sesion;
 import Repositorios.SesionRepository;
-import Vistas.Tutorias;
+import Servicios.CursoServicio;
+import Vistas.TutoriasVista;
 import core.Controller;
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -16,20 +19,20 @@ import java.util.List;
  * @author user
  */
 public class TutoriasControlador extends Controller{
-    private Tutorias vista;
+    private TutoriasVista vista;
     private ControladorBase base;
     private List<Sesion> sesiones;
 
     @Override
     public void run() {
-        vista=new Tutorias(this);
+        vista=new TutoriasVista(this);
     }
 
     public TutoriasControlador(ControladorBase base) {
         this.base = base;
     }
     
-    public Tutorias getVista() {
+    public TutoriasVista getVista() {
         return vista;
     }
 
@@ -45,5 +48,14 @@ public class TutoriasControlador extends Controller{
     
     public void mostrarTemario(){
         base.regresarTablero();
+    }
+    
+    public void abrirVideo(int id) {
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            desktop.browse(new URI(sesiones.get(id).getVideo()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -42,11 +42,11 @@ public class UsuarioServicio {
     public Alumno buscarAlumnoPorId(String id){
         return alumnoRepository.findById(id).get();
     }
-    public Alumno buscarAlumnoPorNombre(String nombre){
+    public String buscarAlumnoPorNombre(String nombre){
         if(alumnoRepository.findByName(nombre).isPresent())
-            return alumnoRepository.findByName(nombre).get();
+            return alumnoRepository.findByName(nombre).get().getId();
         else
-            return null;
+            return "";
     }
     
     public Profesor buscarProfesorPorId(String id){

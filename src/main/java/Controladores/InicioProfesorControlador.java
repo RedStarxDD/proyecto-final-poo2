@@ -4,7 +4,7 @@
  */
 package Controladores;
 
-import Vistas.InicioProfesor;
+import Vistas.InicioProfesorVista;
 import core.Controller;
 
 /**
@@ -12,19 +12,19 @@ import core.Controller;
  * @author user
  */
 public class InicioProfesorControlador extends Controller{
-    private InicioProfesor vista;
+    private InicioProfesorVista vista;
     private ControladorBase base;
 
     @Override
     public void run() {
-        vista=new InicioProfesor(this);
+        vista=new InicioProfesorVista(this);
     }
 
     public InicioProfesorControlador(ControladorBase base) {
         this.base = base;
     }
 
-    public InicioProfesor getVista() {
+    public InicioProfesorVista getVista() {
         return vista;
     }
     

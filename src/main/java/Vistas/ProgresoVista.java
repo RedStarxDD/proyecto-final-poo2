@@ -176,7 +176,7 @@ public class ProgresoVista extends javax.swing.JFrame {
         if(txtNombre.getText().isEmpty()){
             mostrarMensaje("No ha insertado ningún alumno");
         }else{
-        controlador.buscarProgreso(txtNombre.getText());
+            controlador.buscarProgreso(txtNombre.getText());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

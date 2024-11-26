@@ -7,7 +7,7 @@ package Controladores;
 import Modelos.Curso;
 import Modelos.Tema;
 import Repositorios.TemaRepository;
-import Vistas.Temario;
+import Vistas.TemarioVista;
 import core.Controller;
 import java.util.List;
 
@@ -16,20 +16,20 @@ import java.util.List;
  * @author user
  */
 public class TemarioControlador extends Controller{
-    private Temario vista;
+    private TemarioVista vista;
     private ControladorBase base;
     private List<Tema> temas;
 
     @Override
     public void run() {
-        vista=new Temario(this);
+        vista=new TemarioVista(this);
     }
 
     public TemarioControlador(ControladorBase base) {
         this.base = base;
     }
 
-    public Temario getVista() {
+    public TemarioVista getVista() {
         return vista;
     }
 

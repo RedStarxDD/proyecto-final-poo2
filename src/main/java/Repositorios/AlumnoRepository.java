@@ -73,6 +73,14 @@ public class AlumnoRepository implements IRepository<Alumno> {
                     usuario.getContrasena(), usuario.getNombre());
         });
     }
+    
+    public Optional<Alumno> findByName(String name) {
+        return usuarioRepository.findByName(name).map(usuario -> {
+            List<Curso> cursos = obtenerCursosAlumno(name);
+            return new Alumno((ArrayList<Curso>) cursos, usuario.getId(), usuario.getCorreo(),
+                    usuario.getContrasena(), usuario.getNombre());
+        });
+    }
 
     public List<Curso> obtenerCursosAlumno(String alumnoId) {
         List<Curso> cursos = new ArrayList<>();

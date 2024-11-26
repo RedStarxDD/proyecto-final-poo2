@@ -4,12 +4,9 @@
  */
 package Controladores;
 
-import Modelos.Alumno;
 import Modelos.Curso;
-import Modelos.Usuario;
 import Repositorios.AlumnoRepository;
-import Repositorios.CursoRepository;
-import Vistas.Cursos;
+import Vistas.CursosVista;
 import core.Controller;
 import java.util.List;
 
@@ -18,20 +15,20 @@ import java.util.List;
  * @author user
  */
 public class CursosControlador extends Controller{
-    private Cursos vista;
+    private CursosVista vista;
     private ControladorBase base;
     private List<Curso> cursos;
 
     @Override
     public void run() {
-        vista=new Cursos(this);
+        vista=new CursosVista(this);
     }
 
     public CursosControlador(ControladorBase base) {
         this.base = base;
     }
 
-    public Cursos getVista() {
+    public CursosVista getVista() {
         return vista;
     }
 

@@ -4,39 +4,45 @@
  */
 package Controladores;
 
-import Modelos.Alumno;
 import Modelos.Curso;
-import Repositorios.CursoRepository;
-import Vistas.Progreso;
+import Servicios.UsuarioServicio;
+import Vistas.ProgresoVista;
 import core.Controller;
-import java.util.List;
 
 /**
  *
  * @author user
  */
 public class ProgresoControlador extends Controller{
-    private Progreso vista;
+    private ProgresoVista vista;
     private ControladorBase base;
 
     @Override
     public void run() {
-        vista=new Progreso(this);
+        vista=new ProgresoVista(this);
     }
 
     public ProgresoControlador(ControladorBase base) {
         this.base = base;
     }
 
-    public Progreso getVista() {
+    public ProgresoVista getVista() {
         return vista;
     }
     
-    public void buscarProgreso(Alumno alumno){
+    public void buscarProgreso(String nombre){
+        UsuarioServicio usuarioServicio=new UsuarioServicio();
+        String id=usuarioServicio.buscarAlumnoPorNombre(nombre);
         vista.eliimarFilas();
-        for (Curso curso : alumno.getCursos()) {
-            vista.añadirFilas(curso.getNombre(), curso.getProgreso());
-        }       
+            
+        if(!id.isEmpty()){
+            for (Curso curso : usuarioServicio.obtenerCursosAlumno(id)) {
+                vista.añadirFilas(curso.getNombre(), curso.getProgreso());
+            }                   
+        }else{
+            vista.mostrarMensaje("Ningún alumno encontrado");
+        }
+        
         
     }
     

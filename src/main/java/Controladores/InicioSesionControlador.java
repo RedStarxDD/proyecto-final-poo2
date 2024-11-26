@@ -1,16 +1,13 @@
 package Controladores;
 
-import Modelos.Alumno;
-import Modelos.Profesor;
-import Modelos.Usuario;
 import Repositorios.AlumnoRepository;
 import Repositorios.ProfesorRepository;
 import Repositorios.UsuarioRepository;
-import Vistas.IniciodeSesión;
+import Vistas.IniciodeSesiónVista;
 import core.Controller;
 
 public class InicioSesionControlador extends Controller {
-    private IniciodeSesión vista;
+    private IniciodeSesiónVista vista;
     private ControladorBase base;
     private final UsuarioRepository usuarioRepository=new UsuarioRepository();
     private final AlumnoRepository alumnoRepository=new AlumnoRepository();
@@ -18,7 +15,7 @@ public class InicioSesionControlador extends Controller {
 
     @Override
     public void run() {
-        vista = new IniciodeSesión(this);
+        vista = new IniciodeSesiónVista(this);
         vista.setVisible(true);
     }
 
@@ -26,7 +23,7 @@ public class InicioSesionControlador extends Controller {
         this.base = base;
     }
 
-    public IniciodeSesión getVista() {
+    public IniciodeSesiónVista getVista() {
         return vista;
     }
 

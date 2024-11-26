@@ -98,7 +98,7 @@ public class ControladorBase extends Controller {
             progresoControlador.getVista().activarBuscador(true);
         else{
             progresoControlador.getVista().activarBuscador(false);
-            progresoControlador.buscarProgreso((Alumno) usuario);
+            progresoControlador.buscarProgreso(usuario.getNombre());
         }
         
         progresoControlador.getVista().setVisible(true);

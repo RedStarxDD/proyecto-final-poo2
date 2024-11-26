@@ -61,6 +61,32 @@ public class UsuarioRepository implements IRepository<Usuario> {
         }
     }
     
+    public Optional<Usuario> findByName(String name) {
+        String sql = "SELECT * FROM Usuario WHERE nombre = ?";
+
+        try (Connection conn = mysql.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, name);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Usuario usuario = new Usuario(
+                        rs.getString("id"),
+                        rs.getString("correo"),
+                        rs.getString("contrasena"),
+                        rs.getString("nombre")
+                );
+                return Optional.of(usuario);
+            }
+
+            return Optional.empty();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+    }
+    
     public String findByCorreo(String correo) {
         String sql = "SELECT * FROM Usuario WHERE correo = ?";
 
